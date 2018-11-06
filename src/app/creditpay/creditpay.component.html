@@ -1,0 +1,95 @@
+<html >
+
+<body>
+
+<mat-toolbar color="primary" >
+  <mat-toolbar-row >
+    <a mat-button color="accent" [matMenuTriggerFor]="menu" href ="paytable" >ระบบชำระค่าบริการสุขภาพ</a>
+    <button mat-button [matMenuTriggerFor]="menu">ชำระค่าบริการสุขภาพผ่านบัตรเครดิต</button>
+    <mat-menu #menu="matMenu">
+    </mat-menu>
+  </mat-toolbar-row>
+
+</mat-toolbar>
+
+<!--<mat-grid-list cols="4" rowHeight="4:1">-->
+  <!--<mat-grid-tile></mat-grid-tile>-->
+  <!--<mat-grid-tile [colspan] = "2">-->
+    <!--&lt;!&ndash;<h2><p>  Name : {{record2.healthcheckerinfo}} </p> </h2>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<h2> Name : {{record2.healthcheckerinfo}}</h2>&ndash;&gt;-->
+
+  <!--</mat-grid-tile>-->
+  <!--<mat-grid-tile></mat-grid-tile>-->
+<!--</mat-grid-list>-->
+
+<form class="example-form">
+  <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title><h2>ชำระค่าบริการสุขภาพผ่านบัตรเครดิต</h2></mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="ชื่อ-นามสกุล" type="text" [(ngModel)]="namePay" [ngModelOptions]="{standalone: true}" >
+          </mat-form-field>
+      </mat-card-content>
+
+
+    <mat-card-content>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="จำนวนเงิน" id="number" type="number" value="3000" [(ngModel)]="price"  [ngModelOptions]="{standalone: true}"  >
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+        <input matInput placeholder="หมายลขบัตร"  [(ngModel)]="creditNumber"  maxlength="16"   [ngModelOptions]="{standalone: true}" id="telNo" name="telNo" type="tel"  >
+          <!--<input id="cc-number" type="tel" autocomplete="cc-number" ccNumber>-->
+        </mat-form-field>
+        <form class = "width1">
+          <mat-select placeholder="ประเภทบัตร" [(ngModel)]="credit.creditTypeSelect"  name="creditType"   [ngModelOptions]="{standalone: true}"  >
+            <mat-option  *ngFor="let credit of creditType"  [value]="credit.creditTypeDI">
+              {{credit.typeName}}
+            </mat-option>
+
+          </mat-select>
+
+
+          <form class = "CSC">
+            <mat-form-field class="example-full-width">
+
+                     <input matInput placeholder="  CSC (3หลัก)"  maxlength="3"  [(ngModel)]="csc"  [ngModelOptions]="{standalone: true}" >
+                     <!--<input matInput placeholder="  CSC (3หลัก)"  maxlength="3"  [(ngModel)]="csc" id="cc-cvc" type="tel" [ngModelOptions]="{standalone: true}" autocomplete="off" ccCVC>-->
+            </mat-form-field>
+
+          </form>
+
+            <mat-form-field class="IDP">
+              <input  matInput placeholder="หมดอายุ 01/ดด/ปปปป"  id="date" type="date" value="2017-06-01" required [(ngModel)]="expiredDate" [ngModelOptions]="{standalone: true}"    >
+
+              <!--<input  matInput placeholder="หมดอายุ 01/ดด/ปป"  maxlength="7" [(ngModel)]="expiredDate" [ngModelOptions]="{standalone: true}" id="cc-exp-date" type="tel" autocomplete="cc-exp" ccExp>-->
+
+            </mat-form-field>
+
+
+
+          <mat-form-field class="IDP">
+          <input matInput placeholder="รหัสเจ้าหน้าที่รับรอง" [(ngModel)]="namePayee" [ngModelOptions]="{standalone: true}" >
+          </mat-form-field>
+
+
+        </form>
+        <form class = "Buttom1">
+          <a href="/payend " mat-raised-button  color="accent"   (click)="save()"    >ยืนยันการชำระค่าบริการและพิมพ์ใบเสร็จ </a>
+        </form>
+
+      </mat-card-content>
+
+
+  </mat-card>
+
+</form>
+
+
+</body>
+
+</html>

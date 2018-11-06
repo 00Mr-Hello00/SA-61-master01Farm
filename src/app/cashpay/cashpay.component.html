@@ -1,0 +1,42 @@
+<html>
+<body>
+<mat-toolbar color="primary" >
+  <mat-toolbar-row >
+    <a mat-button color="accent" [matMenuTriggerFor]="menu" href="paytable">ระบบชำระค่าบริการสุขภาพ</a>
+    <button mat-button [matMenuTriggerFor]="menu">ชำระค่าบริการสุขภาพด้วยเงินสด</button>
+    <mat-menu #menu="matMenu">
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<form class="example-form">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title><h2>ชำระค่าบริการสุขภาพด้วยเงินสด</h2></mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="ชื่อ-นามสกุล" >
+      </mat-form-field>
+
+    </mat-card-content>
+    <mat-card-content>
+      <form class = "width1">
+
+
+          <mat-form-field class="IDP">
+          <input matInput placeholder="ชื่อเจ้าหน้าที่รับผู้รับเงิน"  [(ngModel)]="namePayee" [ngModelOptions]="{standalone: true}" >
+        </mat-form-field>
+
+
+      </form>
+      <form class = "Buttom1">
+        <a href ="/payend" mat-raised-button color="accent" (click)="save()"  >ยืนยันการชำระค่าบริการและพิมพ์ใบเสร็จ</a>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</form>
+
+</body>
+</html>
